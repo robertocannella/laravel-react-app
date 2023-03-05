@@ -1,8 +1,10 @@
 import {Link, Navigate, Outlet} from "react-router-dom";
 import {useStateContext} from "../contexts/ContextProvider";
+import {useContext, useState} from "react";
+import {ThemeContext} from "../contexts/ThemeContext";
 
 export default function DefaultLayout () {
-
+    const {theme, toggleTheme} = useContext(ThemeContext);
     const {user, token} = useStateContext()
 
     // If user is not logged in, send to login page
@@ -14,17 +16,20 @@ export default function DefaultLayout () {
     }
     return (
         <>
-            <div id="defaultLayout">
-                <aside>
-                    <Link to={'/dashboard'}>Dashboard</Link>
-                    <Link to={'/users'}>Users</Link>
+            <div id="defaultLayout" className={theme}>
+                <aside id="sideBar" className={theme}>
+                <button onClick={toggleTheme}></button>
+                    <Link to={'/dashboard'} className={theme}>Dashboard</Link>
+                    <Link to={'/users'} className={theme}>Users</Link>
                 </aside>
                 <div className="content">
-                    <header>
-                        <div>Header</div>
-                        <div>User Info</div>
+                    <header >
+                        <div className={theme + ' header'}>
+                            <div>Header text</div>
+                            <div>User Info</div>
+                        </div>
                     </header>
-                    <main>
+                    <main  className={theme}>
                         <Outlet />
                     </main>
                 </div>
