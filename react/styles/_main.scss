@@ -1,5 +1,8 @@
 /* 3rd party packages */
 @import "../node_modules/normalize.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* SASS and Global Stuff */
 @import "base/variables";
@@ -8,5 +11,6 @@
 
 /* BEM Blocks */
 @import "modules/login";
-
+@import "modules/flyout";
+@import "modules/form";
 

@@ -5,8 +5,7 @@ import '../styles/_main.scss';
 import {RouterProvider} from "react-router-dom";
 import router from "./router";
 import {ContextProvider} from "./contexts/ContextProvider";
-import App from "./App";
-import {ThemeContext, ThemeProvider} from "./contexts/ThemeContext";
+import { ThemeProvider} from "./contexts/ThemeContext";
 
 
 

@@ -1,0 +1,53 @@
+form {
+    &.dark{
+        background-color: $formBGDark;
+        color: $darkColor;
+    }
+    &.light{
+        background-color: $formBGLight;
+        color: $lightColor;
+    }
+
+}
+input{
+    &.dark{
+        background-color: $primaryDark;
+        color: $darkColor;
+    }
+    &.light{
+        background-color: $white;
+        color: $lightColor;
+    }
+
+}
+input{
+    opacity: 0.6;
+}
+label{
+    &.dark {
+        background-color: transparent;
+        border-radius: 5px;
+    }
+    &.light{
+        background-color: transparent;
+        border-radius: 5px;
+    }
+}
+button {
+    &.dark{
+        background-color: $btnBGDark;
+    }
+    &.light{
+        background-color: $btnBGLight;
+    }
+}
+.title-bar {
+    &.dark{
+        background-color: $titleBarDark;
+    }
+    &.light{
+        background-color: $titleBarLight;
+    }
+}
+
+
