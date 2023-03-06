@@ -8,8 +8,6 @@ import {ContextProvider} from "./contexts/ContextProvider";
 import { ThemeProvider} from "./contexts/ThemeContext";
 
 
-
-
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
           <ContextProvider>

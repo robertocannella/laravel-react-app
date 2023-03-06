@@ -10,10 +10,10 @@ type FormEmailInputProps = {
     updateForm: (e:BaseSyntheticEvent)=>void
 }
 interface IFormPasswordState {
-    password: string
+    passwordConfirm: string
 }
 
-class FormPasswordInput extends Component<FormEmailInputProps, IFormPasswordState> {
+class FormPasswordConfirmationInput extends Component<FormEmailInputProps, IFormPasswordState> {
     static contextType = ThemeContext;
     declare context: React.ContextType<typeof ThemeContext>;
     constructor(props: FormEmailInputProps) {
@@ -21,7 +21,7 @@ class FormPasswordInput extends Component<FormEmailInputProps, IFormPasswordStat
 
 
         this.state = {
-            password: ''
+            passwordConfirm: ''
         };
         this.handleChange = this.handleChange.bind(this)
     }
@@ -32,6 +32,12 @@ class FormPasswordInput extends Component<FormEmailInputProps, IFormPasswordStat
             [evt.target.name]: evt.target.value
         })
     }
+    componentDidMount() {
+        // @ts-ignore
+        this.setState((state)=>({
+            title: "Fill In this field"
+        }))
+    }
 
     render() {
         return (
@@ -41,7 +47,7 @@ class FormPasswordInput extends Component<FormEmailInputProps, IFormPasswordStat
                        className={this.context.theme + "  block p-2 w-full rounded  text-md border-0 border-b-2 border-gray-300 appearance-none focus:outline-none peer"}
                        placeholder=" "
                        name={this.props.id}
-                       value={this.state.password}
+                       value={this.state.passwordConfirm}
                        onChange={this.handleChange}
                 />
                 <label htmlFor={this.props.id}
@@ -53,4 +59,4 @@ class FormPasswordInput extends Component<FormEmailInputProps, IFormPasswordStat
     }
 }
 
-export default FormPasswordInput;
+export default FormPasswordConfirmationInput;
