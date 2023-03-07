@@ -6,14 +6,16 @@ export default class AxiosService {
     // This file only Create Delete Update from frontend.
     private readonly api: AxiosInstance;
     public token;
+    private readonly baseUrl: any;
     constructor() {
         this.token = localStorage.getItem('ACCESS_TOKEN');
+        this.baseUrl = import.meta.env.VITE_API_BASE_URL;
 
         this.api = axios.create({
             headers: {
                 'baseURL': `${import.meta.env.VITE_API_BASE_URL}/api`,
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${toolbar}`
+                'Authorization': `Bearer ${this.token}`
             }
         });
 
@@ -54,7 +56,9 @@ export default class AxiosService {
     }
 
     async createSingle(data:any){
-        return  await this.api.post(`/signup`,data)
+
+        let result =  await this.api.post(`${this.baseUrl}/signup`,data)
+        console.log(result)
     }
 
     async updateSingle(id:string, data:any){

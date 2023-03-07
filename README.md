@@ -93,11 +93,12 @@ php artisan serve
 
 https://dev.mysql.com/downloads/shell/
 ``` 
- sudo mysqlsh --sql -h localhost -P 8001 -u myapp -pmyapp -D laravel-react-app-db 
+ sudo mysqlsh --sql -h localhost -P 8001 -u myapp -pmyapp -D myapp 
+ ```
  
  YOU MAY BE PROMPTED FOR DEVICE PASSWORD HERE
 
-```
+
 
 ## Run first migration
 ``` 
@@ -142,6 +143,62 @@ If you'd like, you can change the port that the front end is running on via the 
   
 ```
 
+## Add react router-dom
+
+``` 
+npm install react-router-dom -S
+```
+# CSS AND STYLES
+
+## ADD SASS
+https://www.youtube.com/watch?v=VaDZ4NS6dbY
+```  
+npm add -D sass 
+mkdir styles
+touch styles/_main.css
+echo "h1 {color: red;}" > styles/_main.css 
+
+```
+
+If styles are working, you are all set. Continue to install dev dependencies:
+
+
+## Add normalize.css
+``` 
+npm i normalize.css
+
+```
+Add import to _main.scss
+
+``` 
+/* _main.scss */
+
+```
+
+Add theme support
+https://javascript.plainenglish.io/building-a-custom-theme-provider-using-reacts-context-api-4e10de8eaf43]
+https://felixgerschau.com/react-typescript-context/
+
+# ADD AUTH CONTROLLER
+
+```` 
+php artisan make:controller Api/AuthController  
+````
+
+### Add requests
+
+``` 
+php artisan make:request LoginRequest
+
+php artisan make:request SignupRequest
+```
+
+# Add NEW Columns to table
+
+``` 
+php artisan make:migration add_first_and_last_to_users --table="users"
+
+```
 # Original Laravel README.md
 
 

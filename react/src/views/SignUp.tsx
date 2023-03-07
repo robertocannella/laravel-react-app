@@ -34,14 +34,13 @@ export default function SignUp () {
             last_name: state.lastName,
             email: state.email,
             password: state.password,
-            password_confirm: state.passwordConfirm
+            password_confirmation: state.passwordConfirm
         }
 
         const axiosService = new AxiosService();
 
-        axiosService.createSingle(payload).then(({data})=>{
-            setToken(data.token);
-            setUser(data.user);
+        axiosService.createSingle(payload).then((data)=>{
+
             console.log(data)
         }).catch((error)=>{
             const response = error.response;

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="tailwindcss" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/react/node_modules/tailwindcss" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/react/node_modules/tailwindcss" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
