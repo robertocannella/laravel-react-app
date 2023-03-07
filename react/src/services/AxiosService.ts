@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
+import axios, {AxiosInstance} from "axios";
 
 
 export default class AxiosService {
@@ -15,17 +15,15 @@ export default class AxiosService {
             headers: {
                 'baseURL': `${import.meta.env.VITE_API_BASE_URL}/api`,
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${this.token}`
+                'Authorization': `Bearer ${this.token}`,
+
             }
         });
 
     }
-    async deleteSingle(id:string|number){
-        const response = await this.api.delete(`/wp-json/wp/v2//${id}`)
-        return response;
-    }
 
-    async createSingle(data:any){
+
+    async createUser(data:any){
 
         return await this.api.post(`${this.baseUrl}/signup`,data)
 
@@ -35,15 +33,23 @@ export default class AxiosService {
         return await this.api.post(`${this.baseUrl}/login`,data)
 
     }
-    async updateSingle(id:string, data:any){
-        try {
-            const result = await this.api.post(`/wp-json/wp/v2/${id}`,data);
-            return result
-        }catch (error){
-            return error;
-        }
+    async getUser(){
+
+        return await this.api.get(`${this.baseUrl}/user`)
+
+    }
+    async getUsers(){
+
+        let res =  await this.api.get(`${this.baseUrl}/users`)
+        console.log(res)
+        return res
     }
 
+    async logout() {
+        return await this.api.post(`${this.baseUrl}/logout`);
+    }
 }
+export const singletonAxios = new AxiosService();
+
 
 

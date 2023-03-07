@@ -49,21 +49,6 @@ class AuthController extends Controller
 
 
 
-
-        // add UserStatus logic here if any
-
-//        if(Auth::attempt(['Email' => $request->username, 'Password' => $request->password], $request->remember))
-//        {
-//
-//            $user = Auth::user();
-//            $success['token'] =  $request->user()->createToken('MyApp')->accessToken;
-//
-//            return response()->json(['success' => $success], $this->successStatus);
-//
-//        }
-//        return response()->json(['error'=>'Unauthorised'], 401);
-
-
         /** @var User $user */
         $user = User::whereEmail($request->email)->first();
        // $user = Auth::user();
@@ -76,6 +61,7 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         /** @var User $user */
+
         $user = $request->user();
         $user->currentAccessToken()->delete();
         return response('',204);

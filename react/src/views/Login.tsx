@@ -14,7 +14,7 @@ import FormErrors from "../components/alerts/FormErrors";
 export default function Login () {
 
     const {theme } = useContext(ThemeContext)                                       /* manage theme                         */
-    const [errors, setErrors] = useState(null);        /* State to manage errors               */
+    const [errors, setErrors] = useState(null);                           /* State to manage errors               */
     const {setUser, setToken} = useStateContext();                                  /* State to manage user after signup    */
 
     /*
@@ -47,8 +47,10 @@ export default function Login () {
         const axiosService = new AxiosService();
 
         axiosService.login(payload).then(({data})=>{
-            setUser(data.user)
-            setToken(data.token)
+            if(setUser)
+                setUser(data.user)
+            if(setToken)
+                setToken(data.token)
 
         }).catch((error)=>{
             const response = error.response;

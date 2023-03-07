@@ -57,9 +57,11 @@ export default function SignUp () {
 
         const axiosService = new AxiosService();
 
-        axiosService.createSingle(payload).then(({data})=>{
-            setUser(data.user)
-            setToken(data.token)
+        axiosService.createUser(payload).then(({data})=>{
+            if (setUser)
+                setUser(data.user)
+            if (setToken)
+                setToken(data.token)
 
         }).catch((error)=>{
             const response = error.response;
