@@ -39,16 +39,35 @@ class AuthController extends Controller
     }
 
     public function login(LoginRequest $request){
+
         $credentials = $request->validated();
-        if (Auth::attempt($credentials)){
+        if (!Auth::attempt($credentials)){
             return response([
                 'message' => 'Provided email or password incorrect'
-            ]);
+            ],422);
         }
 
+
+
+
+        // add UserStatus logic here if any
+
+//        if(Auth::attempt(['Email' => $request->username, 'Password' => $request->password], $request->remember))
+//        {
+//
+//            $user = Auth::user();
+//            $success['token'] =  $request->user()->createToken('MyApp')->accessToken;
+//
+//            return response()->json(['success' => $success], $this->successStatus);
+//
+//        }
+//        return response()->json(['error'=>'Unauthorised'], 401);
+
+
         /** @var User $user */
-        $user = Auth::user();
-        $token = $user->createToken('main')->plainTextToken();
+        $user = User::whereEmail($request->email)->first();
+       // $user = Auth::user();
+        $token = $user->createToken('main')->plainTextToken;
 
         // Will be the data response
         return response(compact('user','token'));

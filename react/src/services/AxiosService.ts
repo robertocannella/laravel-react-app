@@ -19,36 +19,6 @@ export default class AxiosService {
             }
         });
 
-
-    }
-    requestInterceptor (config:AxiosRequestConfig):AxiosRequestConfig{
-
-        // @ts-ignore
-        this.api.interceptors.request.use((config)=>{
-
-           // config.headers.Authorization = `Bearer ${token}`
-        })
-        return config
-
-    }
-    responseInterceptor (){
-
-         const response = this.api.interceptors.response.use((response:AxiosResponse) => {
-
-            return response
-
-        }, (error)=>{
-            const{response} = error;
-            if (response.status === 401){
-
-                localStorage.removeItem("ACCESS_TOKEN")
-            } else {
-                // handle other errors
-                throw error;
-            }
-
-        })
-        return response
     }
     async deleteSingle(id:string|number){
         const response = await this.api.delete(`/wp-json/wp/v2//${id}`)
@@ -57,10 +27,14 @@ export default class AxiosService {
 
     async createSingle(data:any){
 
-        let result =  await this.api.post(`${this.baseUrl}/signup`,data)
-        console.log(result)
-    }
+        return await this.api.post(`${this.baseUrl}/signup`,data)
 
+    }
+    async login(data:any){
+
+        return await this.api.post(`${this.baseUrl}/login`,data)
+
+    }
     async updateSingle(id:string, data:any){
         try {
             const result = await this.api.post(`/wp-json/wp/v2/${id}`,data);
