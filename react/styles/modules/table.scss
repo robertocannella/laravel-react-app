@@ -2,8 +2,13 @@ table{
     &.dark{
         background-color: $formBGDark;
 
+
         & th {
+
+            background-color: $titleBarDark;
             color: $darkColor;
+
+
         }
         & td{
             background-color: $tableRowBGDark;

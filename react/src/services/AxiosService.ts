@@ -40,11 +40,14 @@ export default class AxiosService {
     }
     async getUsers(){
 
-        let res =  await this.api.get(`${this.baseUrl}/users`)
-        console.log(res)
-        return res
-    }
+        return  await this.api.get(`${this.baseUrl}/users`)
 
+    }
+    async removeUser(id:number){
+
+       return await this.api.delete(`${this.baseUrl}/users/${id}`)
+
+    }
     async logout() {
         return await this.api.post(`${this.baseUrl}/logout`);
     }

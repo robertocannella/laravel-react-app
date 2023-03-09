@@ -75,11 +75,11 @@ export default function DefaultLayout () {
                     <header >
                         <div className={theme + ' header'}>
                             <button  onClick={toggleTheme}>{theme === "light" ? (<i className="fa-solid fa-xl fa-moon"></i>) : (<i className="fa-solid fa-xl fa-sun"></i>)}</button>
-                            <div>Web Ticket</div>
+                            <h3 className="mt-0 mb-2 text-3xl font-medium leading-tight text-primary">Web Ticket</h3>
                             <div>
                                 <i className="fa-solid fa-lg fa-user"></i>
-                                {user?.firstName} &nbsp; &nbsp;
-                                <FormButton id={'logout-button'} onPress={onLogout} text={'Logout'}>Logout  </FormButton>
+                                &nbsp; {user?.firstName} &nbsp; &nbsp;
+                                <FormButton id={'logout-button'} onPress={onLogout} text={'Logout'}>Logout</FormButton>
                             </div>
 
                         </div>

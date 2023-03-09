@@ -10,8 +10,11 @@ type TableHTMLProps = {
     fields: any[];      // This is the object field         (must be same size as below)
     headings: any[]     // Place the heading labels here    (must be same size as above)
     content: []         // Pass the whole object here
+    slug: string        // The base slug for all links in this table. i.e. /users/
     children?: ReactNode
+    onDelete: (ev: BaseSyntheticEvent) => void
 }
+
 
 type TableHTMLState = {
     text: string;
@@ -49,27 +52,29 @@ class TableHTML extends Component<TableHTMLProps, TableHTMLState> {
 
 
         return (
-            <div className="shadow-sm overflow-hidden rounded-b-lg my-8">
+            <div className="shadow-sm overflow-hidden rounded-lg my-4">
 
-            <table className={this.context.theme + " border-collapse table-auto w-full rounded-lg text-sm"}>
+            <table className={this.context.theme + " w-full text-sm"}>
                 <thead >
-                    <tr >
+                    <tr>
                 {this.props.headings.map((heading:any,index: number)=>(
-                        <th key={index} className="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{heading}</th>
+                        <th scope="col" key={index} className=" pt-2 dark:border-slate-600 font-medium p-2 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">{heading}</th>
                 ))}
                     </tr>
 
                 </thead>
                 <tbody className={this.context.theme + " bg-white dark:bg-slate-800"}>
 
-                    {filteredArray.map((user:any)=>(
-                         <tr key={user.id}>
-                            {Object.keys(user).filter(key=>{return (key) != 'id'}).map((key,index)=>(
-                                <td key={index} className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{user[key]}</td>
+                    {filteredArray.map((anyObject:any)=>(
+                         <tr key={anyObject.id}>
+                            {Object.keys(anyObject).filter(key=>{return (key) != 'id'}).map((key,index)=>(
+                                <td key={index} className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{anyObject[key]}</td>
                           ))}
-                            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><Link to={'/users/' + user.id}>
-                                <i className="fa-solid fa-pencil"></i>
-                            </Link></td>
+                            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                                <Link to={this.props.slug + anyObject.id}><i className="fa-solid fa-pencil"></i></Link>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button className="" onClick={(ev)=>this.props.onDelete(anyObject)}><i className="fa-solid fa-trash "></i></button>
+                            </td>
                         </tr>
                     ))}
 
