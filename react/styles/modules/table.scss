@@ -1,0 +1,27 @@
+table{
+    &.dark{
+        background-color: $formBGDark;
+
+        & th {
+            color: $darkColor;
+        }
+        & td{
+            background-color: $tableRowBGDark;
+            color: $darkColor;
+
+        }
+    }
+    &.light{
+        background-color: $formBGLight;
+        & th{
+            color: $lightColor;
+        }
+        & td{
+            background-color: $formBGLight;
+            color: $lightColor;
+
+        }
+    }
+
+}
+

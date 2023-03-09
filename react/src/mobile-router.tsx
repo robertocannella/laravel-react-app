@@ -1,7 +1,7 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
 import Login from "./views/Login";
 import SignUp from "./views/SignUp";
-import Users from "./views/Users";
+import Users from "./views/mobile-views/Users";
 import NotFound from "./views/NotFound";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
       children: [
           {
               path: '/',
-              element: <Navigate to={'/users'}/>
+              element: <Navigate to={'/mobile-users'}/>
           },
           {
               path: '/users',

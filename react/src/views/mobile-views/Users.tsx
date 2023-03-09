@@ -1,8 +1,17 @@
+/**
+ *
+ *  MOBILE VIEW USER VIEW
+ *
+ *
+ *
+ */
+
+
 
 import React, {Component} from "react";
-import AxiosService from "../services/AxiosService";
-import ButtonHTML from "../components/html-components/ButtonHTML";
-import TableHTML from "../components/html-components/TableHTML";
+import AxiosService from "../../services/AxiosService";
+import ButtonHTML from "../../components/html-components/ButtonHTML";
+import TableHTML from "../../components/html-components/TableHTML";
 
 
 type UsersProps = {
@@ -52,9 +61,8 @@ class Users extends Component<UsersProps,UsersState> {
                 <div style={{display:'flex', justifyContent: "space-between", alignItems: "center"}}>
                     <h1>User</h1>
                     <ButtonHTML text={"Add New"} id={"add-new"} linkTo={"/users/new"}/>
-
                 </div>
-                <TableHTML fields={['id','first_name','last_name','email']} content={this.state.users} headings={["First Name","Last Name","Email","Actions"]}/>
+                <TableHTML content={this.state.users} fields={['email','id']} headings={["Email","Actions"]}/>
             </div>
         );
     }
