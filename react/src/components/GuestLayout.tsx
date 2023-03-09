@@ -21,9 +21,9 @@ export default function GuestLayout () {
                 <div className="content">
                     <header >
                         <div className={theme + ' header'}>
-                            <button  onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>
-                            <div>Header text</div>
-                            <div>User Info</div>
+                            <button  onClick={toggleTheme}>{theme === "light" ? (<i className="fa-solid fa-xl fa-moon"></i>) : (<i className="fa-solid fa-xl fa-sun"></i>)}</button>
+                            <div>Web Ticket</div>
+
                         </div>
                     </header>
                     <main  className={theme}>

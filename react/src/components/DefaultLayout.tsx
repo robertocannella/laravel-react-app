@@ -68,18 +68,18 @@ export default function DefaultLayout () {
                     </aside>
                     <div id="menuExpander" className={theme} onClick={toggleVisibility}>
 
-                       <span> {visibility ? ">>": '<<'}</span>
+                       <span className="p-1"> {visibility ? (<i className="fa-solid fa-angles-right"></i>): (<i className="fa-solid fa-angles-left"></i>)}</span>
                     </div>
 
                 <div className="content">
                     <header >
                         <div className={theme + ' header'}>
-                            <button  onClick={toggleTheme}>{theme === "light" ? "🌙" : "🌞"}</button>
-                            <div>Header text</div>
+                            <button  onClick={toggleTheme}>{theme === "light" ? (<i className="fa-solid fa-xl fa-moon"></i>) : (<i className="fa-solid fa-xl fa-sun"></i>)}</button>
+                            <div>Web Ticket</div>
                             <div>
+                                <i className="fa-solid fa-lg fa-user"></i>
                                 {user?.firstName} &nbsp; &nbsp;
-                                <FormButton id={'logout-button'} onPress={onLogout} text={'Logout'}> Logout</FormButton>
-
+                                <FormButton id={'logout-button'} onPress={onLogout} text={'Logout'}>Logout  </FormButton>
                             </div>
 
                         </div>

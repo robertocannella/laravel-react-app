@@ -67,7 +67,9 @@ class TableHTML extends Component<TableHTMLProps, TableHTMLState> {
                             {Object.keys(user).filter(key=>{return (key) != 'id'}).map((key,index)=>(
                                 <td key={index} className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{user[key]}</td>
                           ))}
-                            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><Link to={'/users/' + user.id}>Details</Link></td>
+                            <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400"><Link to={'/users/' + user.id}>
+                                <i className="fa-solid fa-pencil"></i>
+                            </Link></td>
                         </tr>
                     ))}
 

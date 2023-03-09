@@ -1,5 +1,10 @@
 /* 3rd party packages */
 @import "../node_modules/normalize.css";
+
+// Font-Awesome
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
