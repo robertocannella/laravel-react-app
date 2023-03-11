@@ -1,0 +1,27 @@
+
+.modal-container{
+
+    &.dark {
+        border: 2px solid $primaryDark;
+        background-color: $modalDark;
+        color: $darkColor;
+    }
+    &.light{
+        border: 2px solid $modalDark;
+        background-color: $modalLight;
+        color: $lightColor;
+    }
+}
+.modal-body{
+    &.dark {
+
+        background-color: $tableRowBGLight;
+        color: $darkColor;
+    }
+    &.light{
+        background-color: $formBGLight;
+        color: $lightColor;
+    }
+}
+
+

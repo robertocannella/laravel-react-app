@@ -1,24 +1,19 @@
 table{
     &.dark{
         background-color: $formBGDark;
-
-
         & th {
-
             background-color: $titleBarDark;
             color: $darkColor;
-
-
         }
         & td{
             background-color: $tableRowBGDark;
             color: $darkColor;
-
         }
     }
     &.light{
         background-color: $formBGLight;
         & th{
+            background-color: $titleBarLight;
             color: $lightColor;
         }
         & td{

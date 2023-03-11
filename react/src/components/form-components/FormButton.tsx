@@ -7,6 +7,7 @@ type FormButtonProps = {
     text: string;
     id: string;
     onPress: (ev: BaseSyntheticEvent) => void
+    outline?: boolean
     children?: ReactNode
 }
 
@@ -35,7 +36,8 @@ class FormButton extends Component<FormButtonProps, FormButtonState> {
             <button
                 onClick={this.props.onPress}
                 type="button"
-                className={this.context.theme + " inline-block  rounded  px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal  transition duration-150 ease-in-out  focus:outline-none"}
+                className={this.context.theme + ((this.props.outline) ? " border-gray-500 ":"") +  " inline-block  rounded  px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal  transition duration-150 ease-in-out  focus:outline-none"}
+
                 data-te-ripple-init
                 data-te-ripple-color={this.context.theme}>
                 {this.props.text}

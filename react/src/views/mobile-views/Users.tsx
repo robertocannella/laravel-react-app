@@ -62,7 +62,7 @@ class Users extends Component<UsersProps,UsersState> {
                     <h1>User</h1>
                     <ButtonHTML text={"Add New"} id={"add-new"} linkTo={"/users/new"}/>
                 </div>
-                <TableHTML content={this.state.users} fields={['email','id']} headings={["Email","Actions"]}/>
+                <TableHTML content={this.state.users} fields={['email','id']} headings={["Email","Actions"]} slug={'/users'} onDelete={()=>{console.log("NOT IMPLEMENTED YET")}}/>
             </div>
         );
     }
