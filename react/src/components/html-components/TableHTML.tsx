@@ -9,7 +9,7 @@ type TableHTMLProps = {
     caption?: string;   // A table caption
     fields: any[];      // This is the object field         (must be same size as below)
     headings: any[]     // Place the heading labels here    (must be same size as above)
-    content: []         // Pass the whole object here
+    content: any[]         // Pass the whole object here
     slug: string        // The base slug for all links in this table. i.e. /users/
     children?: ReactNode
     onDelete: (ev: BaseSyntheticEvent) => void

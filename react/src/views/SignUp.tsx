@@ -3,12 +3,12 @@ import {Link} from "react-router-dom";
 import {BaseSyntheticEvent, useContext, useRef, useState} from "react";
 import {ThemeContext} from "../contexts/ThemeContext";
 import FormTextInput from "../components/form-components/FormTextInput";
-import FormEmailInput from "../components/form-components/FormEmailInput";
 import FormPasswordInput from "../components/form-components/FormPasswordInput";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
 import FormPasswordConfirmInput from "../components/form-components/FormPasswordConfirmInput";
 import AxiosService from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
+import {FormEmailInput} from "../components/form-components/FormEmailInput";
 
 
 

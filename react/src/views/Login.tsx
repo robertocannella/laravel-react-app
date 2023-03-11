@@ -4,11 +4,10 @@ import {ThemeContext} from "../contexts/ThemeContext";
 import FormWindow from "../components/form-components/FormWindow";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
 import FormPasswordInput from "../components/form-components/FormPasswordInput";
-import FormEmailInput from "../components/form-components/FormEmailInput";
 import AxiosService from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
 import FormErrors from "../components/alerts/FormErrors";
-
+import {FormEmailInput} from "../components/form-components/FormEmailInput";
 
 
 export default function Login () {

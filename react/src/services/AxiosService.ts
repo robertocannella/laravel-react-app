@@ -16,7 +16,6 @@ export default class AxiosService {
                 'baseURL': `${import.meta.env.VITE_API_BASE_URL}/api`,
                 'content-type': 'application/json',
                 'Authorization': `Bearer ${this.token}`,
-
             }
         });
 
@@ -38,12 +37,16 @@ export default class AxiosService {
         return await this.api.get(`${this.baseUrl}/user`)
 
     }
+    async getUserById(id:number|string) {
+        return await this.api.get(`${this.baseUrl}/users/${id}`)
+    }
+
     async getUsers(){
 
         return  await this.api.get(`${this.baseUrl}/users`)
 
     }
-    async removeUser(id:number){
+    async removeUser(id:number | string){
 
        return await this.api.delete(`${this.baseUrl}/users/${id}`)
 

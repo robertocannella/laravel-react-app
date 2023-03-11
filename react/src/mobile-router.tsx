@@ -6,7 +6,7 @@ import NotFound from "./views/NotFound";
 import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
-import UserForm from "./views/UserForm";
+import UserForm from "./views/Users/UserForm";
 
 const router = createBrowserRouter([
 
