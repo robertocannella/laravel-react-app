@@ -3,7 +3,7 @@ import {BaseSyntheticEvent, useContext, useState} from "react";
 import {ThemeContext} from "../contexts/ThemeContext";
 import FormWindow from "../components/form-components/FormWindow";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
-import FormPasswordInput from "../components/form-components/FormPasswordInput";
+import {FormPasswordInputFunction} from "../components/form-components/FormPasswordInput";
 import AxiosService from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
 import FormErrors from "../components/alerts/FormErrors";
@@ -15,6 +15,7 @@ export default function Login () {
     const {theme } = useContext(ThemeContext)                                       /* manage theme                         */
     const [errors, setErrors] = useState(null);                           /* State to manage errors               */
     const {setUser, setToken} = useStateContext();                                  /* State to manage user after signup    */
+    const axiosService = new AxiosService();
 
     /*
     * This sets up the state for the form.
@@ -43,7 +44,7 @@ export default function Login () {
             password: state.password,
         }
         setErrors(null); /* Clear existing errors */
-        const axiosService = new AxiosService();
+
 
         axiosService.login(payload).then(({data})=>{
             if(setUser)
@@ -92,7 +93,7 @@ export default function Login () {
                 }
                 <form onSubmit={onSubmit} className={theme + ' p-6 rounded-b-lg'} >
                     <FormEmailInput text={"Email"} id={"email"} inputValue={state.email} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordInput text={"Password"} id={"password"} inputValue={state.password} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordInputFunction text={"Password"} id={"password"} inputValue={state.password} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
                     <FormSubmitButton text={"Login"} id={"signup"}/>
                     <p className="mt-6 text-center">
                         Not a member?

@@ -8,7 +8,6 @@ use App\Http\Requests\SignupRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -18,7 +17,6 @@ class AuthController extends Controller
     }
 
     public function signup (SignupRequest $signupRequest){
-        Log::info("Inside Auth SignUP");
         $data = $signupRequest->validated();
 
         /** @var User $user */
@@ -46,8 +44,6 @@ class AuthController extends Controller
                 'message' => 'Provided email or password incorrect'
             ],422);
         }
-
-
 
         /** @var User $user */
         $user = User::whereEmail($request->email)->first();

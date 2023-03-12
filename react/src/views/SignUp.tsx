@@ -1,12 +1,12 @@
 import FormWindow from "../components/form-components/FormWindow";
 import {Link} from "react-router-dom";
-import {BaseSyntheticEvent, useContext, useRef, useState} from "react";
+import {BaseSyntheticEvent, useContext, useState} from "react";
 import {ThemeContext} from "../contexts/ThemeContext";
 import FormTextInput from "../components/form-components/FormTextInput";
-import FormPasswordInput from "../components/form-components/FormPasswordInput";
+import {FormPasswordInputFunction} from "../components/form-components/FormPasswordInput";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
-import FormPasswordConfirmInput from "../components/form-components/FormPasswordConfirmInput";
-import AxiosService from "../services/AxiosService";
+import {FormPasswordConfirmationInputFunction} from "../components/form-components/FormPasswordConfirmInput";
+import  {singletonAxios} from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
 import {FormEmailInput} from "../components/form-components/FormEmailInput";
 
@@ -55,9 +55,8 @@ export default function SignUp () {
             password_confirmation: state.passwordConfirm /* Laravel is looking for foo_confirmation in the payload */
         }
 
-        const axiosService = new AxiosService();
 
-        axiosService.createUser(payload).then(({data})=>{
+        singletonAxios.createUser(payload).then(({data})=>{
             if (setUser)
                 setUser(data.user)
             if (setToken)
@@ -97,9 +96,6 @@ export default function SignUp () {
             {errors &&
 
                 <div role="alert  rounded-lg">
-                    {/*<div className="bg-red-300 text-white font-bold rounded-t-lg px-4 py-2">*/}
-                    {/*    Danger*/}
-                    {/*</div>*/}
                 {Object.keys(errors).map(key => (
 
                         <div className="px-3 bg-red-100 py-1 text-red-700">
@@ -117,8 +113,8 @@ export default function SignUp () {
 
                 </div>
                     <FormEmailInput inputValue={state.email} text={"Email Address"} id={"email"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordInput  inputValue={state.password} text={"Password"} id={"password"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordConfirmInput inputValue={state.passwordConfirm}  text={"Confirm Password"} id={"passwordConfirm"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordInputFunction inputValue={state.password} text={"Password"} id={"password"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordConfirmationInputFunction inputValue={state.passwordConfirm}  text={"Confirm Password"} id={"passwordConfirm"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
                     <FormSubmitButton text={"Sign Up!"} id={"signup"}/>
                 <p className="mt-6 text-center">
                     Already registered?

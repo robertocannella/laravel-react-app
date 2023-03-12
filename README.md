@@ -175,9 +175,33 @@ Add import to _main.scss
 
 ```
 
+## Add font awesome
+```
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/react-fontawesome@latest
+
+```
+
+Add import to _main.scss
+```
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+```
+
 Add theme support
 https://javascript.plainenglish.io/building-a-custom-theme-provider-using-reacts-context-api-4e10de8eaf43]
 https://felixgerschau.com/react-typescript-context/
+
+
+## Add styled components 
+After installing ```styled-components```, install @types for Typescript projects
+```
+npm install styled-components
+npm i --save-dev @types/styled-components`
+
+```
 
 # ADD AUTH CONTROLLER
 

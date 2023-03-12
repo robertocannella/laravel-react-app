@@ -4,8 +4,8 @@ import {IUser} from "./IUser";
 import AxiosService, {singletonAxios} from "../../services/AxiosService";
 import FormTextInput from "../../components/form-components/FormTextInput";
 import {FormEmailInput} from "../../components/form-components/FormEmailInput";
-import FormPasswordInput from "../../components/form-components/FormPasswordInput";
-import FormPasswordConfirmInput from "../../components/form-components/FormPasswordConfirmInput";
+import {FormPasswordInputFunction} from "../../components/form-components/FormPasswordInput";
+import  {FormPasswordConfirmationInputFunction} from "../../components/form-components/FormPasswordConfirmInput";
 import FormSubmitButton from "../../components/form-components/FormSubmitButton";
 import FormWindow from "../../components/form-components/FormWindow";
 import {ThemeContext} from "../../contexts/ThemeContext";
@@ -18,6 +18,8 @@ export default function UserForm () {
     const [selectedUser, setSelectedUser] = useState<IUser|null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(null);     /* State to manage errors               */
+    const [password, setPassword] = useState('');
+    const [password_confirmed, setPassword_confirmed] = useState('');
 
 
     const getUser = (id:string) =>{
@@ -41,10 +43,11 @@ export default function UserForm () {
     }
     const updateForm = (event:any) =>{
         if (event.target.name === "password_confirm"){
-            setSelectedUser(
-                {...selectedUser as IUser, password_confirm: event.target.value}
-            )
-        }else {
+            setPassword_confirmed(event.target.value)
+        }else if (event.target.name === "password"){
+            setPassword(event.target.value)
+        } else {
+
             setSelectedUser({
                 ...selectedUser as IUser, [event.target.name]: event.target.value
             })
@@ -60,12 +63,12 @@ export default function UserForm () {
             first_name: selectedUser?.first_name,
             last_name: selectedUser?.last_name,
             email: selectedUser?.email,
-            password: selectedUser?.password,
-            password_confirmation: selectedUser?.password_confirm /* Laravel is looking for foo_confirmation in the payload */
+            password: password,
+            password_confirmation: password_confirmed /* Laravel is looking for foo_confirmation in the payload */
         }
 
 
-        singletonAxios.createUser(payload)
+        axiosService.createUser(payload)
             .then(({data})=>{
                 console.log(data)
             // if (setUser)
@@ -100,19 +103,19 @@ export default function UserForm () {
                     <form onSubmit={onSubmit} className={theme + ' p-6 rounded-b-lg'}>
                         <div className="w-full md:w-2/3 px-0 mb-6 md:mb-0">
 
-                            <FormTextInput name={"firstName"} updateForm={(e: BaseSyntheticEvent) => updateForm(e)}
-                                           id="firstName" text="First Name"/>
-                            <FormTextInput name={"lastName"} updateForm={(e: BaseSyntheticEvent) => updateForm(e)}
-                                           id="lastName" text="Last Name"/>
+                            <FormTextInput name={"first_name"} updateForm={(e: BaseSyntheticEvent) => updateForm(e)}
+                                           id="first_name" text="First Name"/>
+                            <FormTextInput name={"last_name"} updateForm={(e: BaseSyntheticEvent) => updateForm(e)}
+                                           id="last_name" text="Last Name"/>
 
                         </div>
                         <FormEmailInput inputValue={selectedUser.email} text={"Email Address"} id={"email"}
                                         updateForm={(e: BaseSyntheticEvent) => updateForm(e)}/>
-                        {/*<FormPasswordInput inputValue={selectedUser?.password} text={"Password"} id={"password"}*/}
-                        {/*                   updateForm={(e: BaseSyntheticEvent) => updateForm(e)}/>*/}
-                        {/*<FormPasswordConfirmInput inputValue={selectedUser?.password_confirm} text={"Confirm Password"}*/}
-                        {/*                          id={"passwordConfirm"}*/}
-                        {/*                          updateForm={(e: BaseSyntheticEvent) => updateForm(e)}/>*/}
+                        <FormPasswordInputFunction inputValue={password} text={"Password"} id={"password"}
+                                           updateForm={(e: BaseSyntheticEvent) => updateForm(e)}/>
+                        <FormPasswordConfirmationInputFunction inputValue={password_confirmed} text={"Confirm Password"}
+                                                  id={"password_confirm"}
+                                                  updateForm={(e: BaseSyntheticEvent) => updateForm(e)}/>
                         <FormSubmitButton text={"Sign Up!"} id={"signup"}/>
                         <p className="mt-6 text-center">
                             Already registered?
