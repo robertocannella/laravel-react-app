@@ -11,7 +11,6 @@ type FormEmailInputProps = {
 }
 
 
-
 export const FormEmailInput = (props: FormEmailInputProps) =>{
     const [value, setValue] = useState(props.inputValue);
     const handleChange = (evt:BaseSyntheticEvent) => {

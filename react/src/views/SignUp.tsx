@@ -2,10 +2,10 @@ import FormWindow from "../components/form-components/FormWindow";
 import {Link} from "react-router-dom";
 import {BaseSyntheticEvent, useContext, useState} from "react";
 import {ThemeContext} from "../contexts/ThemeContext";
-import FormTextInput from "../components/form-components/FormTextInput";
-import {FormPasswordInputFunction} from "../components/form-components/FormPasswordInput";
+import {FormTextInput} from "../components/form-components/FormTextInput";
+import {FormPasswordInput} from "../components/form-components/FormPasswordInput";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
-import {FormPasswordConfirmationInputFunction} from "../components/form-components/FormPasswordConfirmInput";
+import {FormPasswordConfirmationInput} from "../components/form-components/FormPasswordConfirmInput";
 import  {singletonAxios} from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
 import {FormEmailInput} from "../components/form-components/FormEmailInput";
@@ -108,13 +108,13 @@ export default function SignUp () {
             <form onSubmit={onSubmit} className={theme + ' p-6 rounded-b-lg'} >
                 <div className="w-full md:w-2/3 px-0 mb-6 md:mb-0">
 
-                    <FormTextInput name={"firstName"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)} id="firstName" text="First Name" />
-                    <FormTextInput name={"lastName"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)} id="lastName" text="Last Name" />
+                    <FormTextInput inputValue={state.firstName} name={"firstName"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)} id="firstName" text="First Name" />
+                    <FormTextInput inputValue={state.lastName} name={"lastName"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)} id="lastName" text="Last Name" />
 
                 </div>
                     <FormEmailInput inputValue={state.email} text={"Email Address"} id={"email"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordInputFunction inputValue={state.password} text={"Password"} id={"password"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordConfirmationInputFunction inputValue={state.passwordConfirm}  text={"Confirm Password"} id={"passwordConfirm"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordInput inputValue={state.password} text={"Password"} id={"password"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordConfirmationInput inputValue={state.passwordConfirm} text={"Confirm Password"} id={"passwordConfirm"} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
                     <FormSubmitButton text={"Sign Up!"} id={"signup"}/>
                 <p className="mt-6 text-center">
                     Already registered?

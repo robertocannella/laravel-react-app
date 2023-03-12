@@ -51,6 +51,11 @@ export default class AxiosService {
        return await this.api.delete(`${this.baseUrl}/users/${id}`)
 
     }
+    async updateUser(id:number | string, data: any){
+
+        return await this.api.put(`${this.baseUrl}/users/${id}`,data)
+
+    }
     async logout() {
         return await this.api.post(`${this.baseUrl}/logout`);
     }

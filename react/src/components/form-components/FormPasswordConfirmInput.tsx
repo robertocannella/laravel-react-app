@@ -8,7 +8,7 @@ interface Props {
     inputValue: string
     updateForm: (e:BaseSyntheticEvent)=>void
 }
-export const FormPasswordConfirmationInputFunction = (props: Props) => {
+export const FormPasswordConfirmationInput = (props: Props) => {
     const {theme} = useContext(ThemeContext);
 
     return (

@@ -3,7 +3,7 @@ import {BaseSyntheticEvent, useContext, useState} from "react";
 import {ThemeContext} from "../contexts/ThemeContext";
 import FormWindow from "../components/form-components/FormWindow";
 import FormSubmitButton from "../components/form-components/FormSubmitButton";
-import {FormPasswordInputFunction} from "../components/form-components/FormPasswordInput";
+import {FormPasswordInput} from "../components/form-components/FormPasswordInput";
 import AxiosService from "../services/AxiosService";
 import {useStateContext} from "../contexts/ContextProvider";
 import FormErrors from "../components/alerts/FormErrors";
@@ -93,7 +93,7 @@ export default function Login () {
                 }
                 <form onSubmit={onSubmit} className={theme + ' p-6 rounded-b-lg'} >
                     <FormEmailInput text={"Email"} id={"email"} inputValue={state.email} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
-                    <FormPasswordInputFunction text={"Password"} id={"password"} inputValue={state.password} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
+                    <FormPasswordInput text={"Password"} id={"password"} inputValue={state.password} updateForm={(e:BaseSyntheticEvent)=>updateForm(e)}/>
                     <FormSubmitButton text={"Login"} id={"signup"}/>
                     <p className="mt-6 text-center">
                         Not a member?

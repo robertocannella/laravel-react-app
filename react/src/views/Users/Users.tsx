@@ -38,7 +38,6 @@ import {IUser} from "./IUser";
          setConfirmDeleteModalVisibility(true);
          setSelectedUser(user)
 
-
      }
      const cancelDelete = () => {
 
