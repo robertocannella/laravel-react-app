@@ -29,6 +29,7 @@ export class DefaultMenu extends Component<MyProps> {
                 <aside>
                     <Link to={'/dashboard'}  className={this.context.theme}>Dashboard</Link>
                     <Link to={'/users'} className={this.context.theme}>Users</Link>
+                    <Link to={'/posts'} className={this.context.theme}>Posts</Link>
                 </aside>
 
             </div>

@@ -7,6 +7,8 @@ import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
 import UserForm from "./views/Users/UserForm";
+import Posts from "./views/Posts/Posts";
+import PostForm from "./views/Posts/PostForm";
 
 const router = createBrowserRouter([
 
@@ -29,6 +31,18 @@ const router = createBrowserRouter([
           {
               path: '/users/:id',
               element: <UserForm key="userUpdate"/>
+          },
+          {
+              path: '/posts',
+              element: <Posts/>
+          },
+          {
+              path: '/posts/new',
+              element: <PostForm/>
+          },
+          {
+              path: '/posts/:id',
+              element: <PostForm/>
           },
           {
               path: '/dashboard',

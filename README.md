@@ -216,13 +216,54 @@ php artisan make:request LoginRequest
 
 php artisan make:request SignupRequest
 ```
+ 
+# Making models and Migrations:
 
+This command makes a User model and creates a migration for that model. 
+
+``` 
+  php artisan make:model Post -m 
+```
+From here you can edit the generated migration to add specific columns.
+
+``` 
+    public function up(): void
+    {
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');    // maxes out at 255
+            $table->text('excerpt');    // maxes out at 65,535
+            $table->text('body');
+            $table->timestamps();
+            $table->timestamp('published_at')->nullable();
+        });
+    }
+```
+To apply the changes to the database, run the migrate command
+
+``` 
+php artisan migrate
+```
+
+## Expose API
+Build the nessessary files:
+``` 
+# Manages API endpint
+php artisan make:controller Api/PostController --model=Post --resource --requests --api 
+
+
+# Converts from database to JSON Serializable 
+php artisan make:resource PostResource 
+
+```
 # Add NEW Columns to table
 
 ``` 
 php artisan make:migration add_first_and_last_to_users --table="users"
 
 ```
+
+
 # Original Laravel README.md
 
 

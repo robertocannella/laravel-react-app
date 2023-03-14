@@ -24,8 +24,8 @@ class FormWindow extends Component<FormWindowProps> {
         return (
 
             <div
-                className={this.context.theme + " title-bar block max-w-sm mx-auto rounded-lg pt-3"}>
-                <span className={this.context.theme + " title-bar pl-2"}>{this.props.title}</span>
+                className={this.context.theme + " title-bar block max-w-md mx-auto rounded-lg pt-3"}>
+                <div className={this.context.theme + " title-bar pl-2 mb-2"}>{this.props.title}</div>
                 {this.props.children}
             </div>
         );

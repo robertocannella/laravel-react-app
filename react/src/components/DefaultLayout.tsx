@@ -68,6 +68,7 @@ export default function DefaultLayout () {
                     <aside  hidden={visibility} className={theme + ' menuFlyout'}>
                         <Link to={'/dashboard'}  className={theme}>Dashboard</Link>
                         <Link to={'/users'} className={theme}>Users</Link>
+                        <Link to={'/posts'} className={theme}>Posts</Link>
                     </aside>
                     <div id="menuExpander" className={theme} onClick={toggleVisibility}>
 
