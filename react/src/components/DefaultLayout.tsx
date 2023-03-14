@@ -17,19 +17,7 @@ export default function DefaultLayout () {
         setVisibility(!visibility)
 
     }
-    useEffect(()=>{ /* Runs like Component Did Mount (be sure to put an empty array as second argument) */
-        axiosService.getUser().then(({data})=>{
-            const  user = {
-                firstName: data.first_name,
-                lastName: data.last_name,
-                email: data.email
-            }
-            if (setUser)
-                setUser( (user as User));
 
-        })
-
-    },[])  /* be sure to put an empty array as second argument */
 
 
     /**
@@ -50,6 +38,20 @@ export default function DefaultLayout () {
         });
     }
 
+    useEffect(()=>{ /* Runs like Component Did Mount (be sure to put an empty array as second argument) */
+        axiosService.getUser().then(({data})=>{
+            const  user = {
+                firstName: data.first_name,
+                lastName: data.last_name,
+                email: data.email
+            }
+            if (setUser)
+                setUser( (user as User));
+
+        })
+
+    },[])  /* be sure to put an empty array as second argument */
+
     // If user is not logged in, send to login page
     if(!token) {
         return (
@@ -57,6 +59,7 @@ export default function DefaultLayout () {
         )
 
     }
+
     return (
 
         <>
