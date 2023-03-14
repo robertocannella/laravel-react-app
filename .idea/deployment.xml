@@ -2,7 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="laravel-react">
+      <paths name="laravel-react-api">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/react/dist" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="laravel-react-front">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$/react/dist" web="/" />

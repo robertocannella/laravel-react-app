@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       {isMobile ? (
               <ContextProvider>
                   <ThemeProvider>
-                      <RouterProvider router={mobileRouter}/>
+                      <RouterProvider router={router}/>
                   </ThemeProvider>
               </ContextProvider>
       )
