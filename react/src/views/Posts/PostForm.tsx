@@ -6,6 +6,7 @@ import {FormTextInput} from "../../components/form-components/FormTextInput";
 import FormSubmitButton from "../../components/form-components/FormSubmitButton";
 import FormWindow from "../../components/form-components/FormWindow";
 import {ThemeContext} from "../../contexts/ThemeContext";
+import FormTextArea from "../../components/form-components/FormTextArea";
 
 
 export default function PostForm () {
@@ -36,7 +37,7 @@ export default function PostForm () {
 
     }
     const updateForm = (event:any) =>{
-        console.log(event.target.value)
+
         setSelectedPost({
             ...selectedPost as IPost, [event.target.name]: event.target.value
         })
@@ -87,7 +88,7 @@ export default function PostForm () {
         <>
             {isLoading ? "Loading...": ""}
             {!isLoading &&
-                <FormWindow title={selectedPost.id ? `Update post ${selectedPost.title}` : 'Create new post.'}>
+                <FormWindow containsTextArea={true} title={selectedPost.id ? `Update post ${selectedPost.title}` : 'Create new post.'}>
                     {errors &&
 
                         <div role="alert  rounded-lg">
@@ -109,12 +110,9 @@ export default function PostForm () {
 
                         </div>
 
+                        <FormTextArea name={"body"} updateForm={(e=>updateForm(e))} defaultValue={selectedPost.body}/>
 
-                        <label htmlFor="w3review">Post Details</label>
 
-                        <textarea name="body" id="body" onChange={(e)=>updateForm(e)} defaultValue={selectedPost.body} rows={4} cols={50}>
-
-                        </textarea>
 
                         <FormSubmitButton text={"Save"} id={"save"}/>
                     </form>

@@ -1,3 +1,34 @@
+.hamburgerToggle {
+    background-color: #fab005;
+    border-radius: 6px;
+    margin: 12px;
+    border: 3px solid $headerDark;
+    text-align: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#gridMenu > a {
+    border: 3px solid $secondaryDark;
+    display: block;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    opacity: 1;
+    transition: all 0.2s;
+    margin: 12px;
+    &.dark{
+        color: $linkDark;
+    }
+    &.light{
+        color:  $linkLight;
+    }
+}
+#gridMenu > a:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 #menuExpander {
     position: relative;
     z-index: 40;
@@ -10,51 +41,16 @@
     &.light{
         background-color: $headerLight;
     }
-
 }
 #menuExpander:hover {
-
        opacity: .6;
-
 }
 .menuFlyout {
     &.dark{
-       background-color:  $primaryDark;
+       background-color:  $headerDark;
     }
     &.light{
        background-color:  $primaryLight;
     }
 }
 
-
-.flyoutMenu {
-    width: 100vw;
-    height: 100vh;
-    background-color: $darkBackground;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: transform .3s
-    cubic-bezier(0, .52, 0, 1);
-    overflow: scroll;
-    z-index: 1000;
-}
-
-.flyoutMenu.hide {
-    transform: translate3d(-100vw, 0, 0);
-}
-
-.flyoutMenu.show {
-    transform: translate3d(0vw, 0, 0);
-    overflow: hidden;
-}
-
-.flyoutMenu h2 a {
-    color: $darkColor;
-    margin-left: 15px;
-    text-decoration: none;
-}
-
-.flyoutMenu h2 a:hover {
-    text-decoration: underline;
-}

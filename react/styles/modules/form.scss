@@ -10,6 +10,7 @@ form {
 
 }
 input{
+
     &.dark{
         background-color: $primaryDark;
         color: $darkColor;
@@ -20,9 +21,7 @@ input{
     }
 
 }
-input{
-    opacity: 0.6;
-}
+
 label{
     &.dark {
         background-color: transparent;
@@ -39,6 +38,18 @@ button {
     }
     &.light{
         background-color: $btnBGLight;
+    }
+}
+textarea{
+
+    padding: 10px;
+    &.dark{
+        background-color: $primaryDark;
+        color: $darkColor;
+    }
+    &.light{
+        background-color: $white;
+        color: $lightColor;
     }
 }
 .title-bar {

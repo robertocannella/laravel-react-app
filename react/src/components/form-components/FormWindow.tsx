@@ -5,6 +5,8 @@ import {ThemeContext} from "../../contexts/ThemeContext";
 type FormWindowProps = {
     title: string;
     children?: ReactNode
+    containsTextArea?: boolean
+    rcClasses?: string
 }
 
 class FormWindow extends Component<FormWindowProps> {
@@ -21,10 +23,11 @@ class FormWindow extends Component<FormWindowProps> {
     }
 
     render() {
+
         return (
 
             <div
-                className={this.context.theme + " title-bar block max-w-md mx-auto rounded-lg pt-3"}>
+                className={this.context.theme +  ' max-w-lg '+ this.props.rcClasses + " title-bar  block mx-auto rounded-lg pt-3"}>
                 <div className={this.context.theme + " title-bar pl-2 mb-2"}>{this.props.title}</div>
                 {this.props.children}
             </div>

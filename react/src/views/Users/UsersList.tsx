@@ -8,7 +8,7 @@ import {IUser} from "./IUser";
 
 
 
- export default function Users () {
+ export default function UsersList () {
      let axiosService = new AxiosService();
      const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
      const [isLoading, setIsLoading] = useState(false);

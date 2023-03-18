@@ -4,7 +4,9 @@ import React, {BaseSyntheticEvent, useContext, useEffect, useState} from "react"
 import {ThemeContext} from "../contexts/ThemeContext";
 import AxiosService from "../services/AxiosService";
 import FormButton from "./form-components/FormButton";
-
+import {FontAwesomeIcon,} from "@fortawesome/react-fontawesome";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import { faUsers,faDashboard,faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function DefaultLayout () {
@@ -13,11 +15,18 @@ export default function DefaultLayout () {
     const [visibility, setVisibility] = useState(false);
     const axiosService = new AxiosService();
     const toggleVisibility = ()=>{
-
         setVisibility(!visibility)
 
-    }
+        const gridMenu = document.getElementById('pageRoot');
+        const links = Array.from(document.getElementsByClassName('menuLink') as HTMLCollectionOf<HTMLElement>);
 
+
+        if (gridMenu && !visibility)
+            gridMenu.style.gridTemplateColumns = '75px auto'
+        if (gridMenu && visibility)
+            gridMenu.style.gridTemplateColumns = '20% auto'
+
+    }
 
 
     /**
@@ -60,20 +69,18 @@ export default function DefaultLayout () {
 
     }
 
+    // @ts-ignore
     return (
 
-        <>
-            <div id="defaultLayout"  className={theme}>
+        <div id={"pageRoot"}  style={{display: 'grid', gridTemplateColumns: '20% auto', transition:  '300ms'}}>
+            <aside id="gridMenu" className={theme + ' menuFlyout'}>
+                <div onClick={toggleVisibility} className={"hamburgerToggle"}><FontAwesomeIcon  icon={faBars}/></div>
+                <Link to={'/dashboard'} id="dashboardLink"  className={theme + ' menuLink'}>{visibility ? <FontAwesomeIcon icon={faDashboard} /> : "Dashboard"}</Link>
+                <Link to={'/users'} id="usersLink" className={theme + ' menuLink'}>{visibility ? <FontAwesomeIcon icon={faUsers} /> : "Users"}</Link>
+                <Link to={'/posts'} id="postsLink" className={theme + ' menuLink'}>{visibility ? <FontAwesomeIcon icon={faEnvelope} /> : "Posts"}</Link>
+            </aside>
+            <div id="defaultLayout"  className={theme} style={{}}>
 
-                    <aside  hidden={visibility} className={theme + ' menuFlyout'}>
-                        <Link to={'/dashboard'}  className={theme}>Dashboard</Link>
-                        <Link to={'/users'} className={theme}>Users</Link>
-                        <Link to={'/posts'} className={theme}>Posts</Link>
-                    </aside>
-                    <div id="menuExpander" className={theme} onClick={toggleVisibility}>
-
-                       <span className="p-1"> {visibility ? (<i className="fa-solid fa-angles-right"></i>): (<i className="fa-solid fa-angles-left"></i>)}</span>
-                    </div>
 
                 <div className="content">
                     <header >
@@ -93,6 +100,6 @@ export default function DefaultLayout () {
                     </main>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

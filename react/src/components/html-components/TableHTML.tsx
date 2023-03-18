@@ -9,7 +9,7 @@ type TableHTMLProps = {
     caption?: string;   // A table caption
     fields: any[];      // This is the object field         (must be same size as below)
     headings: any[]     // Place the heading labels here    (must be same size as above)
-    content: any[]         // Pass the whole object here
+    content: any[]      // Pass the whole object here
     slug: string        // The base slug for all links in this table. i.e. /users/
     children?: ReactNode
     onDelete: (ev: BaseSyntheticEvent) => void
@@ -20,6 +20,7 @@ type TableHTMLState = {
     text: string;
     id: string;
     children?: ReactNode
+
 }
 class TableHTML extends Component<TableHTMLProps, TableHTMLState> {
     static contextType = ThemeContext;
@@ -68,9 +69,11 @@ class TableHTML extends Component<TableHTMLProps, TableHTMLState> {
                     {filteredArray.map((anyObject:any)=>(
                          <tr key={anyObject.id}>
                             {Object.keys(anyObject).filter(key=>{return (key) != 'id'}).map((key,index)=>(
-                                <td key={index} className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{anyObject[key]}</td>
+                                <td key={index} className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{(key === 'excerpt' ? anyObject[key].substring(0,30) + '...' :anyObject[key])}</td>
                           ))}
                             <td className="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
+                                <Link to={this.props.slug +'view/'+ anyObject.id}><i className="fa-solid fa-eye"></i></Link>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
                                 <Link to={this.props.slug + anyObject.id}><i className="fa-solid fa-pencil"></i></Link>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <button className="" onClick={(ev)=>this.props.onDelete(anyObject)}><i className="fa-solid fa-trash "></i></button>
